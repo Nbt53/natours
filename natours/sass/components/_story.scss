@@ -1,0 +1,84 @@
+.story {
+    font-size: $default-font-size;
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: rgba($color: white, $alpha: 60%);
+    border-radius: 3px;
+    padding: 3.75rem;
+    padding-left: 5.25rem;
+    transform: skewX(-12deg);
+
+    @include respond(tab-port) {
+        width: 130%;
+        padding: 2.5rem 4.4rem;
+
+    }
+
+    @include respond(phone) {
+        transform: skewX(0);
+
+    }
+
+    &-shape {
+        position: relative;
+        width: 9.375rem;
+        height: 9.375rem;
+        float: left;
+
+        // this defines how the text is wrapped around the element, element must be floated and have dimensions defined to work
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+
+        clip-path: circle(50% at 50% 50%);
+        transform: translateX(-1.5rem) skewX(12deg);
+
+        @include respond(phone) {
+            transform: translateX(-1.5rem) skewX(0);
+
+        }
+    }
+
+    &-img {
+        width: 100%;
+        height: 100%;
+        transform: scale(1.4) translateX(1rem);
+        backface-visibility: hidden;
+        transition: all .5s;
+    }
+
+    &-text {
+        transform: skewX(12deg);
+
+        @include respond(phone) {
+            transform: skewX(0);
+
+        }
+    }
+
+    &-caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: white;
+        text-transform: uppercase;
+        font: 1.2rem;
+        text-align: center;
+        opacity: 0;
+        transition: all .5s;
+        backface-visibility: hidden;
+
+    }
+
+    &:hover &-caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+
+    }
+
+    &:hover &-img {
+        transform: scale(1) translateX(0);
+        filter: blur(3px) brightness(80%);
+    }
+}

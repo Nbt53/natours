@@ -1,0 +1,36 @@
+/* universal reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    //defines 1 rem  (needs to be font-size but i don't want to change it now)
+    font: 62.5%;
+
+    // @include respond(phone){
+    //     font-size: 50%;
+    // }
+
+    @include respond(tab-land) {
+        font-size: 90%;
+    }
+
+    @include respond(tab-port) {
+        font-size: 80%;
+    }
+
+    @include respond(big-desktop) {
+        font-size: 110%;
+    }
+}
+
+body {
+    box-sizing: border-box;
+    padding: 30px;
+
+    @include respond(tab-port) {
+        padding: 0;
+    }
+}

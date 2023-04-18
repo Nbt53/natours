@@ -1,0 +1,217 @@
+.card {
+
+    //functionality
+    perspective: 1500px;
+    -moz-perspective: 1500px;
+    position: relative;
+    height: 32.25rem;
+
+    &-side {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transition: all .8s ease;
+        height: 32.5rem;
+        backface-visibility: hidden;
+        border-radius: 3px;
+        overflow: hidden;
+        box-shadow: 0 1rem 3.5rem rgba($color-black, .15);
+
+        &-front {
+            background-color: $color-white;
+        }
+
+        &-back {
+            transform: rotateY(180deg);
+
+            &-1 {
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+
+            &-2 {
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+
+            &-3 {
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
+        }
+    }
+
+
+    &:hover &-side-front {
+        transform: rotateY(180deg);
+
+    }
+
+    &:hover &-side-back {
+        transform: rotateY(0);
+
+    }
+
+    //front side styling
+    &-picture {
+        background-size: cover;
+        height: 14.375rem;
+        background-blend-mode: screen;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+        &-1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),
+                url(../img/nat-5.jpg);
+        }
+
+        &-2 {
+            background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark),
+                url(../img/nat-6.jpg);
+        }
+
+        &-3 {
+            background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark),
+                url(../img/nat-7.jpg);
+        }
+    }
+
+    &-heading {
+        font-size: 1.75rem;
+        text-transform: uppercase;
+        text-align: right;
+        color: $color-white;
+        position: absolute;
+        top: 7.5rem;
+        right: 1.25rem;
+        width: 75%;
+
+    }
+
+    &-heading-span {
+        padding: 0.625rem 0.97rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+
+        &-1 {
+            background-image: linear-gradient(to right bottom,
+                    rgba($color-secondary-light, .85),
+                    rgba($color-secondary-dark, .85));
+        }
+
+        &-2 {
+            background-image: linear-gradient(to right bottom,
+                    rgba($color-primary-light, .85),
+                    rgba($color-primary-dark, .85));
+        }
+
+        &-3 {
+            background-image: linear-gradient(to right bottom,
+                    rgba($color-tertiary-light, .85),
+                    rgba($color-tertiary-dark, .85));
+        }
+    }
+
+    &-details {
+        padding: 1.875rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        li {
+            text-align: center;
+            font-size: .935rem;
+            padding: .625rem;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid $color-gray-light-2;
+            }
+        }
+
+    }
+
+    //back side styling
+    &-cta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate((-50%, -50%));
+        width: 90%;
+        text-align: center;
+    }
+
+    &-price-box {
+        text-align: center;
+        margin-bottom: 5rem;
+        color: $color-white;
+    }
+
+    &-price-only {
+        font-size: .96rem;
+
+    }
+
+    &-price-value {
+        font-size: 3.75rem;
+        font-weight: 100;
+    }
+
+    .btn-price {
+        padding: 0.16rem 4.25rem;
+        margin: 0 50%;
+        transform: translateX(-50%);
+    }
+
+
+    // @include respond(tab-port)
+    @media screen and (max-width:56.25em),
+    only screen and (hover:none) {
+        height: auto;
+        border-radius: 3px;
+        background-color: $color-white;
+        box-shadow: 0 1rem 3.5rem rgba($color-black, .15);
+
+        &-side {
+            height: auto;
+            position: relative;
+            box-shadow: none;
+
+            &-back {
+                transform: rotateY(0);
+                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+
+            }
+
+            &:hover &-side-front {
+                transform: rotateY(0);
+
+            }
+        }
+
+        &-details {
+            padding: .625rem 1.85rem;
+        }
+
+        //back side styling
+        &-cta {
+            position: relative;
+            top: 0%;
+            left: 0;
+            transform: translate(0);
+            width: 100%;
+            padding: 4.375rem 2.5rem 2.5rem 2.5rem;
+        }
+
+        &-price-box {
+            margin-bottom: 1.85rem;
+        }
+
+        &-price-value {
+            font-size: 2.5rem;
+        }
+
+
+
+    }
+}
